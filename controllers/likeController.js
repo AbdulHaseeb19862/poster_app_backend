@@ -20,3 +20,15 @@ exports.toggleLike = async (req, res) => {
     res.status(500).json({ message: "Server error", error: error.message });
   }
 };
+
+// ---------------- GET LIKES COUNT for a post ----------------
+
+exports.getLikesCount = async (req, res) => {
+  try {
+    const { postId } = req.params;
+    const count = await Like.count({ where: { postId } });
+    res.status(200).json({ postId, likeCount: count });
+  } catch (error) {
+    res.status(500).json({ message: "Server error", error: error.message });
+  }
+};
