@@ -1,4 +1,4 @@
-const { Post, User, Comment, Like } = require("../models");
+import { Post, User, Comment, Like } from "../models";
 
 // ---------------- CREATE POST ----------------
 
