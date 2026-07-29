@@ -1,6 +1,6 @@
 import { User, Comment } from "../models";
 
-exports.addComment = async (req, res) => {
+export const addComment = async (req, res) => {
   try {
     const { postId } = req.params;
     const { text, parentId } = req.body;
@@ -42,7 +42,7 @@ exports.addComment = async (req, res) => {
 
 // ---------------- GET ALL COMMENTS of a post (nested with replies) ---------------
 
-exports.getCommentsByPost = async (req, res) => {
+export const getCommentsByPost = async (req, res) => {
   try {
     const comments = await Comment.findAll({
       where: { postId, parentId: null },
@@ -66,7 +66,7 @@ exports.getCommentsByPost = async (req, res) => {
 
 // ---------------- DELETE COMMENT ----------------
 
-exports.deleteComment = async (req, res) => {
+export const deleteComment = async (req, res) => {
   try {
     const { id } = req.params;
     const comment = await Comment.findByPk(id);

@@ -4,7 +4,7 @@ import { User } from "../models";
 
 // ---------------- REGISTER ----------------
 
-exports.register = async (req, res) => {
+export const register = async (req, res) => {
   try {
     const { name, email, password } = req.body;
     if (!name || !email || !password) {
@@ -38,7 +38,7 @@ exports.register = async (req, res) => {
 
 // ---------------- LOGIN ----------------
 
-exports.login = async (req, res) => {
+export const login = async (req, res) => {
   try {
     const { email, password } = req.body;
 

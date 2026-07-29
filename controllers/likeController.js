@@ -1,6 +1,6 @@
 import { Like } from "../models";
 
-exports.toggleLike = async (req, res) => {
+export const toggleLike = async (req, res) => {
   try {
     const { postId } = req.params;
     const userId = req.user.id;
@@ -23,7 +23,7 @@ exports.toggleLike = async (req, res) => {
 
 // ---------------- GET LIKES COUNT for a post ----------------
 
-exports.getLikesCount = async (req, res) => {
+export const getLikesCount = async (req, res) => {
   try {
     const { postId } = req.params;
     const count = await Like.count({ where: { postId } });

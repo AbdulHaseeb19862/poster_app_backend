@@ -2,7 +2,7 @@ import { Post, User, Comment, Like } from "../models";
 
 // ---------------- CREATE POST ----------------
 
-exports.createPost = async (req, res) => {
+export const createPost = async (req, res) => {
   try {
     const { title, content, imageUrl } = req.body;
     if (!title) {
@@ -24,7 +24,7 @@ exports.createPost = async (req, res) => {
 
 // ---------------- GET ALL POSTS ----------------
 
-exports.getAllPosts = async (req, res) => {
+export const getAllPosts = async (req, res) => {
   try {
     const posts = await Post.findAll({
       include: [
@@ -46,7 +46,7 @@ exports.getAllPosts = async (req, res) => {
 
 // ---------------- GET SINGLE POST (with comments+replies) ----------------
 
-exports.getPostById = async (req, res) => {
+export const getPostById = async (req, res) => {
   try {
     const { id } = req.params;
     const post = await Post.findByPk(id, {
@@ -83,7 +83,7 @@ exports.getPostById = async (req, res) => {
 
 // ---------------- DELETE POST ----------------
 
-exports.deletePost = async (req, res) => {
+export const deletePost = async (req, res) => {
   try {
     const { id } = req.params;
     const post = await Post.findByPk(id);
