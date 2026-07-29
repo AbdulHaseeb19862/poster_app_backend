@@ -39,3 +39,27 @@ exports.addComment = async (req, res) => {
     res.status(500).json({ message: "Server error", error: error.message });
   }
 };
+
+// ---------------- GET ALL COMMENTS of a post (nested with replies) ---------------
+
+exports.getCommentsByPost = async (req, res) => {
+  try {
+    const comments = await Comment.findAll({
+      where: { postId, parentId: null },
+      include: [
+        { model: User, as: "commenter", attributes: ["id", "name"] },
+        {
+          model: Comment,
+          as: "replies",
+          include: [
+            { model: User, as: "commenter", attributes: ["id", "name"] },
+          ],
+          order: [["createdAt", "ASC"]],
+        },
+      ],
+      order: [["createdAt", "DESC"]],
+    });
+  } catch (error) {
+    res.status(500).json({ message: "Server error", error: error.message });
+  }
+};
