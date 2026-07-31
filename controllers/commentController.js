@@ -1,4 +1,4 @@
-import { User, Comment } from "../models";
+import { User, Comment } from "../models/index.js";
 
 export const addComment = async (req, res) => {
   try {

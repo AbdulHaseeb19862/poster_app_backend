@@ -1,4 +1,4 @@
-import { Post, User, Comment, Like } from "../models";
+import { Post, User, Comment, Like } from "../models/index.js";
 
 // ---------------- CREATE POST ----------------
 

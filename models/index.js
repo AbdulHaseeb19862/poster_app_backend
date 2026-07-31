@@ -1,4 +1,4 @@
-import sequilize from "sequelize";
+import sequelize from "../config/database.js";
 import Comment from "./Comment.js";
 import Post from "./Post.js";
 import Like from "./Like.js";
@@ -38,4 +38,5 @@ Like.belongsTo(Post, { foreignKey: "postId" });
 User.hasMany(Like, { foreignKey: "userId" });
 Like.belongsTo(User, { foreignKey: "userId", as: "likedBy" });
 
-export default { sequelize, User, Post, Comment, Like };
+// export default { sequelize, User, Post, Comment, Like };
+export { sequelize, User, Post, Comment, Like };
